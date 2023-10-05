@@ -6,6 +6,8 @@ import { Button } from "@nextui-org/button";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { redirect } from "next/navigation";
 
+export const dynamic = 'force-dynamic'
+
 export default async function SignInPage() {
 	const supabase = createServerComponentClient({ cookies })
 	const {data} = await supabase.auth.getSession()

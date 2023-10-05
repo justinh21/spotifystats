@@ -14,6 +14,8 @@ import { redirect } from "next/navigation";
 import TopArtists from "@/components/TopArtists";
 import TopSongs from "@/components/TopSongs";
 
+export const dynamic = 'force-dynamic'
+
 export default async function Home() {
 	const supabase = createServerComponentClient({ cookies })
 

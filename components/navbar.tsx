@@ -26,7 +26,6 @@ import {
 	HeartFilledIcon,
 	SearchIcon,
 } from "../components/icons";
-import { cookies } from "next/headers";
 
 import { Logo } from "../components/icons";
 import SignInOut from "./Auth/SignInOut";
