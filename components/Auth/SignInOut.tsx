@@ -24,6 +24,7 @@ export default function SignInOut({session}: {session:Session | null}) {
         const { error } = await supabase.auth.signInWithOAuth({
             provider: "spotify",
             options: {
+                scopes: "user-top-read",
                 redirectTo: `http://localhost:3000/auth/callback`
             },
         })
