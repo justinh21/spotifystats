@@ -2,9 +2,22 @@
 
 import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell} from "@nextui-org/react";
 import { Avatar } from "@nextui-org/avatar";
+import { getTopSongs } from "@/lib/spotify";
+import useSWR from "swr";
 
-export default function TopSongs({songs}: {songs: any}) {
-    const rows = songs.map((song: any, i: number) =>
+export default function TopSongs() {
+    const { data, error, isLoading } = useSWR('Get top songs', getTopSongs)
+
+    if (error) {
+        console.log(error)
+        return <div>Failed to load</div>
+    }
+
+    if (isLoading) {
+        return <div>Is loading..</div>
+    }
+
+    const rows = data.map((song: any, i: number) =>
                     <TableRow key={i}>
                     <TableCell>
                         <Avatar

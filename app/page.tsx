@@ -23,37 +23,6 @@ export default async function Home() {
 		data: { user },
 	} = await supabase.auth.getUser()
 
-	const {
-		data: {session},
-	} = await supabase.auth.getSession()
-
-	const providerToken = session?.provider_token || null;
-
-	const topArtists = async() => {
-		const res = await fetch("https://api.spotify.com/v1/me/top/artists", {
-			headers: {
-			  Authorization: `Bearer ${providerToken}`,
-			},
-		});
-
-		const data = await res.json()
-		return data.items
-	}
-
-	const topSongs = async() => {
-		const res = await fetch("https://api.spotify.com/v1/me/top/tracks", {
-			headers: {
-			  Authorization: `Bearer ${providerToken}`,
-			},
-		});
-
-		const data = await res.json()
-		return data.items
-	}
-
-	const artists = await topArtists()
-	const songs = await topSongs()
-
 	if (!user) {
 		redirect('/sign-in')
 	}
@@ -70,11 +39,11 @@ export default async function Home() {
 			<div className="mt-4 flex flex-wrap items-center justify-center gap-3">
 				<div className="flex flex-col items-center gap-3">
 					<h1>Your Top Artists</h1>
-					<TopArtists artists={artists}/>
+					<TopArtists/>
 				</div>
 				<div className="flex flex-col items-center gap-3">
 					<h1>Your Top Songs</h1>
-					<TopSongs songs={songs}/>
+					<TopSongs/>
 				</div>
 			</div>
 		</section>
