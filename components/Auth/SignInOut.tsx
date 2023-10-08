@@ -17,7 +17,6 @@ export default function SignInOut({session}: {session:Session | null}) {
         if (error) {
             console.log(error)
         }
-        router.refresh()
     }
 
     const signIn = async() => {
@@ -32,16 +31,14 @@ export default function SignInOut({session}: {session:Session | null}) {
         if (error) {
             console.log(error)
         }
-        router.refresh()
     }
 
     return (
-        <button
-        // as={NextLink}
-        onClick={session ? signOut : signIn}
+        <Button
+        onPress={session ? signOut : signIn}
         className={buttonStyles({ color: 'primary', radius: "full", variant: "shadow" })}
     >
         {session ? 'Logout' : 'Login'}
-        </button>
+        </Button>
     )
 }

@@ -11,7 +11,7 @@ export async function middleware(req: any) {
     const provider_refresh_token = session?.data.session?.provider_refresh_token
     const {error} = await supabase
     .from('users')
-    .upsert({ provider_refresh_token: provider_refresh_token})
+    .update({ provider_refresh_token: provider_refresh_token})
     .eq('id', user_id)
   }
   return res

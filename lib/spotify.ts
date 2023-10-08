@@ -63,13 +63,12 @@ export const getTopArtists = async() => {
     });
 
     const data = await res.json()
+
     return data.items
 }
 
 export const getTopSongs = async() => {
     const { access_token: accessToken } = await getAccessToken();
-
-    console.log(accessToken)
     
     if (!accessToken) {
       return;
@@ -81,8 +80,6 @@ export const getTopSongs = async() => {
     });
 
     const data = await res.json()
-
-    console.log(res)
 
     return data.items
 }
