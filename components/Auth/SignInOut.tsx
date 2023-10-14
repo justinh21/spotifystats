@@ -24,7 +24,7 @@ export default function SignInOut({session}: {session:Session | null}) {
             provider: "spotify",
             options: {
                 scopes: "user-top-read user-library-read",
-                redirectTo: `http://localhost:3000/auth/callback`
+                redirectTo: `https://spotifystats-jh.vercel.app/auth/callback`
             },
         })
 
