@@ -49,8 +49,10 @@ export default function TopAlbums() {
             item.album.name.toLowerCase().includes(filterValue.toLowerCase()),
           );
         }
-    
         return filteredAlbums;
+    } else {
+      let filteredAlbums = [null] 
+      return filteredAlbums;
     }
   }, [data, filterValue, hasSearchFilter]);
 
