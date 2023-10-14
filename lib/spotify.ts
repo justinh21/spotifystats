@@ -83,3 +83,20 @@ export const getTopSongs = async() => {
 
     return data.items
 }
+
+export const getSavedAlbums = async() => {
+  const { access_token: accessToken } = await getAccessToken();
+  
+  if (!accessToken) {
+    return;
+  }
+  const res = await fetch("https://api.spotify.com/v1/me/albums", {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+  });
+
+  const data = await res.json()
+
+  return data.items
+}
