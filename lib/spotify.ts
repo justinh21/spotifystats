@@ -98,5 +98,7 @@ export const getSavedAlbums = async() => {
 
   const data = await res.json()
 
-  return data.items
+  const items = data.items
+
+  return items
 }
